@@ -154,8 +154,8 @@ export default function ContactSection() {
             </button>
 
             {/* Left Side (visible only on desktop) */}
-            <div className="hidden md:flex bg-[#189086] rounded-2xl p-8 !text-white flex-col justify-center">
-              <img src="/logo02.png" alt="Waymor Advisory" className="w-28 mb-6" />
+            <div className="hidden md:flex bg-[#009C9C] rounded-2xl p-8 !text-white flex-col justify-center">
+              <img src="/logo02.png" alt="Waymor Advisory" className="w-50 mb-6" />
               <h3 className="text-2xl !text-white font-bold mb-4">Schedule a Strategy Call</h3>
               <p className="text-white/80">
                Schedule a consultation to explore tailored solutions that improve efficiency and drive sustainable results.

@@ -16,7 +16,7 @@ export default function LeadershipTeam() {
       {
       name: "Sima Unogu",
       title: "Executive Director, Advisory & Strategy",
-      image: "/SIma-Unogu.jpg",
+      image: "/Sima.jpg",
       bio: "Sima brings nearly a decade of experience in capital markets, corporate finance, and strategy advisory. With roles at PwC and CHAI, she has advised on vaccine financing and national budget strategy, recognized by the CFA Black Women Scholarship",
     },
     {
