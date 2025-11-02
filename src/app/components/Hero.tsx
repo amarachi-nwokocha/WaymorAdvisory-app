@@ -123,7 +123,7 @@ const HeroSection = () => {
         <motion.div variants={fadeInLeft}>
           <button  onClick={() => setIsOpen(true)}
            
-            className="inline-block bg-[var(--color-blue)] hover:bg-[var(--color-darkgreen)] font-[Arimo] text-lg px-8 py-3 text-white
+            className="inline-block bg-[var(--color-blue)] hover:bg-[#1a4066]  font-[Arimo] text-lg px-8 py-3 text-white
              rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Schedule A Strategy Call
@@ -147,7 +147,7 @@ const HeroSection = () => {
   <div
     className="absolute inset-0 md:hidden bg-[#13304D]/60 backdrop-blur-sm"
     style={{
-      backgroundImage: "url('/logo.jpg')",
+      backgroundImage: "url('/logo02.png')",
       backgroundSize: "160px",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
@@ -165,8 +165,8 @@ const HeroSection = () => {
   </button>
 
   {/* Left Side (visible only on desktop) */}
-  <div className="hidden md:flex bg-[#13304D] rounded-2xl p-8 !text-white flex-col justify-center">
-    <img src="/logo.jpg" alt="Waymor Advisory" className="w-28 mb-6" />
+  <div className="hidden md:flex bg-[#189086] rounded-2xl p-8 !text-white flex-col justify-center">
+    <img src="/logo02.png" alt="Waymor Advisory" className="w-28 mb-6" />
     <h3 className="text-2xl font-bold mb-4">Schedule a Strategy Call</h3>
     <p className="text-white/80">
       Let’s discuss how Waymor can help your organization navigate
@@ -344,7 +344,7 @@ const HeroSection = () => {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-[#189086] text-white py-3 rounded-md font-semibold hover:bg-[#0A5F54] transition"
+          className="w-full bg-[#13304D] text-white py-3 rounded-md font-semibold hover:bg-[#1a4066] transition"
         >
           Submit Inquiry / Schedule Call
         </button>
