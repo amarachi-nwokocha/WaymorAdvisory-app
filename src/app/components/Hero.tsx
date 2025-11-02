@@ -114,7 +114,7 @@ const HeroSection = () => {
           variants={fadeInLeft}
           className="max-w-xl text-[#13304D] text-base md:text-lg font-[Arimo] mb-10"
         >
-          Waymor Advisory Ltd is a dynamic consulting firm committed to helping organizations
+          Waymor Advisory is a dynamic consulting firm committed to helping organizations
           navigate complexity, achieve clarity, resilience, and growth. Guided by integrity,
           we work across sectors to strengthen systems, build capacity, and enable smarter
           decisions. We deliver strategic insight that creates sustainable impact.
@@ -126,7 +126,7 @@ const HeroSection = () => {
             className="inline-block bg-[var(--color-blue)] hover:bg-[var(--color-darkgreen)] font-[Arimo] text-lg px-8 py-3 text-white
              rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            Schedule a Strategy Call
+            Schedule A Strategy Call
           </button>
         </motion.div>
       </motion.div>

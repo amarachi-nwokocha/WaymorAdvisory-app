@@ -7,7 +7,7 @@ const services = [
   {
     id: 1,
     title: "Advisory & Strategy",
-    icon: <Briefcase className="w-8 h-8 text-[#189086]" />,
+    icon: <Briefcase className="w-8 h-8 text-[#800020]" />,
     description:
       "Our Advisory & Strategy division supports organizations in navigating complexity and unlocking growth.",
     points: [
@@ -20,7 +20,7 @@ const services = [
   {
     id: 2,
     title: "Governance, Risk & Sustainability",
-    icon: <Shield className="w-8 h-8 text-[#189086]" />,
+    icon: <Shield className="w-8 h-8 text-[#800020]" />,
     description:
       "We help organizations establish sound governance frameworks and embed sustainability principles.",
     points: [
@@ -33,7 +33,7 @@ const services = [
   {
     id: 3,
     title: "Public Sector Finance & Policy",
-    icon: <Landmark className="w-8 h-8 text-[#189086]" />,
+    icon: <Landmark className="w-8 h-8 text-[#800020]" />,
     description:
       "We partner with governments and development institutions to design evidence-based policies.",
     points: [
@@ -46,7 +46,7 @@ const services = [
   {
     id: 4,
     title: "Capacity Development & Transformation",
-    icon: <Users className="w-8 h-8 text-[#189086]" />,
+    icon: <Users className="w-8 h-8 text-[#800020]" />,
     description:
       "We help organizations strengthen their people, systems, and culture for lasting impact.",
     points: [
@@ -103,7 +103,7 @@ export default function ServiceCards() {
                   animate={{ rotate: isExpanded ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ChevronDown className="text-[#189086] w-5 h-5" />
+                  <ChevronDown className="text-[#800020] w-5 h-5" />
                 </motion.div>
               </div>
 

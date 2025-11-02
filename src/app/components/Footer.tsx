@@ -50,13 +50,13 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold text-[#189086] mb-4">Follow Us</h4>
           <div className="flex items-center gap-4">
-            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#189086] hover:text-[#189086] transition-all">
+            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#800020] hover:text-[#800020] transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#189086] hover:text-[#189086] transition-all">
+            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#800020] hover:text-[#800020] transition-all">
               <Twitter className="w-5 h-5" />
             </a>
-            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#189086] hover:text-[#189086] transition-all">
+            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#800020] hover:text-[#800020] transition-all">
               <Instagram className="w-5 h-5" />
             </a>
           </div>

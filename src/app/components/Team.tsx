@@ -8,28 +8,28 @@ export default function LeadershipTeam() {
 
   const leaders = [
     {
-      name: "Divine Anunobi",
+      name: "Divine Anunobi CPMC",
       title: "CEO & Director, Public Sector Finance & Policy",
-      image: "/man.avif",
-      bio: "Divine Anunobi is an accomplished executive with expertise spanning financial advisory, public sector reform, and development finance. Formerly at PwC and CHAI, he has advised national institutions and global agencies, driving evidence-based policy and fiscal reform.",
+      image: "/Divine-Anunobi.jpg",
+      bio: "Divine is a finance and public policy professional with experience in advisory, development finance, and government reform. His experience includes PwC and CHAI, advising top-tier private-sector clients, supporting national reforms and developing WHO-endorsed financing models.",
     },
-    {
-      name: "Franklyn Ezumah",
-      title: "Executive Director, Operations & Finance",
-      image: "/man.avif",
-      bio: "Franklyn Ezumah combines deep experience in banking and global health consulting. From Access Bank to CHAI, he has led strategic programs and financial portfolios backed by Gavi and the Bill & Melinda Gates Foundation.",
-    },
-    {
+      {
       name: "Sima Unogu",
       title: "Executive Director, Advisory & Strategy",
-      image: "/person.avif",
-      bio: "Sima Unogu brings nearly a decade of experience in capital markets, corporate finance, and strategy advisory. With roles at PwC and CHAI, she has advised on vaccine financing and national budget strategy, recognized by the CFA Black Women Scholarship.",
+      image: "/SIma-Unogu.jpg",
+      bio: "Sima brings nearly a decade of experience in capital markets, corporate finance, and strategy advisory. With roles at PwC and CHAI, she has advised on vaccine financing and national budget strategy, recognized by the CFA Black Women Scholarship",
     },
     {
-      name: "Chidinma Aguomba",
+      name: "Chidinma Aguomba ACCA, CPA",
       title: "Executive Director, Governance, Risk & Sustainability",
-      image: "/person.avif",
-      bio: "Chidinma Aguomba is a finance professional with expertise in tax, audit, and governance. Having worked with EY, PwC Nigeria, and PwC Canada, she holds ACCA and CPA qualifications and brings a deep understanding of financial systems and internal controls.",
+      image: "/Chidinma-Aguomba.jpg",
+      bio: "Chidinma is a finance professional with expertise in tax, audit, and governance. Having worked with EY, PwC Nigeria, and PwC Canada, she holds ACCA and CPA qualifications and brings a deep understanding of financial systems and internal controls.",
+    },
+    {
+      name: "Franklyn Ezumah MBA, CPMC",
+      title: "Executive Director, Operations & Finance",
+      image: "/Franklyn-Ezumah.jpeg",
+      bio: "Franklyn combines deep experience in banking and global health consulting. From Access Bank to CHAI, he has led strategic programs and financial portfolios backed by Gavi and the Gates Foundation.",
     },
   ];
 
