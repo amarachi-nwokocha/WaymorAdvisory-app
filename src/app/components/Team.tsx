@@ -10,7 +10,7 @@ export default function LeadershipTeam() {
     {
       name: "Divine Anunobi CPMC",
       title: "CEO & Director, Public Sector Finance & Policy",
-      image: "/Divine-Anunobi.jpg",
+      image: "/Divine2.jpg",
       bio: "Divine is a finance and public policy professional with experience in advisory, development finance, and government reform. His experience includes PwC and CHAI, advising top-tier private-sector clients, supporting national reforms and developing WHO-endorsed financing models.",
     },
       {
@@ -22,7 +22,7 @@ export default function LeadershipTeam() {
     {
       name: "Chidinma Aguomba ACCA, CPA",
       title: "Executive Director, Governance, Risk & Sustainability",
-      image: "/Chidinma-Aguomba.jpg",
+      image: "/Chidimma2.jpg",
       bio: "Chidinma is a finance professional with expertise in tax, audit, and governance. Having worked with EY, PwC Nigeria, and PwC Canada, she holds ACCA and CPA qualifications and brings a deep understanding of financial systems and internal controls.",
     },
     {

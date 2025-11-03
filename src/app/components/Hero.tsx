@@ -169,8 +169,7 @@ const HeroSection = () => {
     <img src="/logo02.png" alt="Waymor Advisory" className="w-50 mb-6" />
     <h3 className="text-2xl font-bold mb-4">Schedule a Strategy Call</h3>
     <p className="text-white/80">
-      Let’s discuss how Waymor can help your organization navigate
-      complexity and unlock sustainable growth.
+    Schedule a consultation to explore tailored solutions that improve efficiency and drive sustainable results.
     </p>
   </div>
 
