@@ -41,7 +41,7 @@ const Navbar = () => {
     alt="Waymor Logo"
     width={190}
     height={60}
-    className="object-contain w-[120px] h-[40px] md:w-[190px] md:h-[60px]"
+    className="object-contain w-[120px] h-[40px] md:w-[350px] md:h-[60px]"
   />
 </Link>
 

@@ -221,6 +221,7 @@ export default function ContactSection() {
                   </div>
 
                   {/* Support Type */}
+                  <p className="font-bold text-lg !text-white md:!text-[#13304D]">Service Type</p>
                   <select
                     name="supportType"
                     value={formData.supportType}
@@ -235,6 +236,7 @@ export default function ContactSection() {
                   </select>
 
                   {/* Radio Options */}
+                  <p className="font-bold text-lg !text-white md:!text-[#13304D]">Preferred Mode of Discussion</p>
                   <div className="flex flex-col gap-1">
                     <label className="text-white md:text-gray-700">
                       <input
@@ -282,6 +284,7 @@ export default function ContactSection() {
                   />
 
                   {/* Date & Time */}
+                  <p className="font-bold text-lg !text-white md:!text-[#13304D]">Date & Time</p>
                   <div className="flex gap-3">
                     <input
                       name="date"
@@ -300,6 +303,7 @@ export default function ContactSection() {
                   </div>
 
                   {/* Referral */}
+                  <p className="font-bold text-lg !text-white md:!text-[#13304D]">How Did You Hear About Us?</p>
                   <select
                     name="referral"
                     value={formData.referral}
@@ -334,7 +338,7 @@ export default function ContactSection() {
                     type="submit"
                     className="w-full bg-[#13304D] text-white py-3 rounded-md font-semibold hover:bg-[#1a4066] transition"
                   >
-                    Submit Inquiry / Schedule Call
+                  Schedule Call
                   </button>
                 </form>
               ) : (

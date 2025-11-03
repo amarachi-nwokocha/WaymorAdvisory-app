@@ -107,7 +107,7 @@ const HeroSection = () => {
           variants={fadeInLeft}
           className="text-4xl md:text-5xl lg:text-6xl font-[Lato] font-bold leading-tight mb-6 text-[#13304D]"
         >
-          At a Glance
+          At A Glance
         </motion.h1>
 
         <motion.p
@@ -165,9 +165,10 @@ const HeroSection = () => {
   </button>
 
   {/* Left Side (visible only on desktop) */}
-  <div className="hidden md:flex bg-[#009C9C] rounded-2xl p-8 !text-white flex-col justify-center">
+  <div className="hidden md:flex bg-[#009C9C] rounded-2xl p-8 
+  !text-white flex-col justify-between">
     <img src="/logo02.png" alt="Waymor Advisory" className="w-50 mb-6" />
-    <h3 className="text-2xl font-bold mb-4">Schedule a Strategy Call</h3>
+    <h3 className="text-2xl font-bold mb-4">Schedule A Strategy Call</h3>
     <p className="text-white/80">
     Schedule a consultation to explore tailored solutions that improve efficiency and drive sustainable results.
     </p>
@@ -232,6 +233,7 @@ const HeroSection = () => {
         </div>
 
         {/* Support Type */}
+          <h2 className="font-bold text-lg !text-white md:!text-[#13304D]">Service Type</h2>
         <select
           name="supportType"
           value={formData.supportType}
@@ -246,6 +248,7 @@ const HeroSection = () => {
         </select>
 
         {/* Radio Options */}
+        <p className="font-bold text-lg !text-white md:!text-[#13304D]">Preferred Mode of Discussion</p>
         <div className="flex flex-col gap-1">
           <label className="text-white md:text-gray-700">
             <input
@@ -293,6 +296,8 @@ const HeroSection = () => {
         />
 
         {/* Date & Time */}
+        
+        <p className="font-bold text-lg !text-white md:!text-[#13304D]">Date & Time</p>
         <div className="flex gap-3">
           <input
             name="date"
@@ -311,6 +316,7 @@ const HeroSection = () => {
         </div>
 
         {/* Referral */}
+           <p className="font-bold text-lg !text-white md:!text-[#13304D]">How Did You Hear About Us?</p>
         <select
           name="referral"
           value={formData.referral}
@@ -345,7 +351,7 @@ const HeroSection = () => {
           type="submit"
           className="w-full bg-[#13304D] text-white py-3 rounded-md font-semibold hover:bg-[#1a4066] transition"
         >
-          Submit Inquiry / Schedule Call
+         Schedule Call
         </button>
       </form>
     ) : (
