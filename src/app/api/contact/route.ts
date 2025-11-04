@@ -69,11 +69,17 @@ export async function POST(req: Request): Promise<NextResponse> {
 
     return NextResponse.json({ success: true }, { status: 200 });
 
-  } catch (error: any) {
-    console.error("🔥 Email error at route:", error);
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+  console.error("Email error:", error);
+
+  let message = "An unexpected error occurred";
+  if (error instanceof Error) {
+    message = error.message;
   }
+
+  return NextResponse.json(
+    { success: false, error: message },
+    { status: 500 }
+  );
+}
 }

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import {  X } from "lucide-react";
 const HeroSection = () => {
   // Animation variants with proper typing
@@ -167,7 +166,7 @@ const HeroSection = () => {
   {/* Left Side (visible only on desktop) */}
   <div className="hidden md:flex bg-[#009C9C] rounded-2xl p-8 
   !text-white flex-col justify-between">
-    <img src="/logo02.png" alt="Waymor Advisory" className="w-50 mb-6" />
+    <Image src="/logo02.png" alt="Waymor Advisory" className="w-50 mb-6" />
     <h3 className="text-2xl font-bold mb-4">Schedule A Strategy Call</h3>
     <p className="text-white/80">
     Schedule a consultation to explore tailored solutions that improve efficiency and drive sustainable results.
