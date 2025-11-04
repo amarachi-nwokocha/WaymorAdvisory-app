@@ -41,12 +41,36 @@ export default function ContactSection() {
   };
 
   // ✅ Logs form data on submit
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("📝 Submitted Form Data:", formData);
-    setSubmitted(true);
-    setTimeout(() => setIsOpen(false), 3000);
-  };
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  console.log("📝 Submitted Form Data:", formData);
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      console.log("✅ Email sent successfully!");
+      setSubmitted(true);
+      setTimeout(() => setIsOpen(false), 3000);
+    } else {
+      console.error("❌ Failed to send email:", result.error);
+      alert("Something went wrong. Please try again later.");
+    }
+  } catch (error) {
+    console.error("⚠️ Network or server error:", error);
+    alert("Failed to send request. Please try again later.");
+  }
+};
+
 
   return (
     <>
