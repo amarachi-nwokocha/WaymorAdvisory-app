@@ -10,7 +10,7 @@ export default function LeadershipTeam() {
     {
       name: "Divine Anunobi CPMC",
       title: "CEO & Director, Public Sector Finance & Policy",
-      image: "/Divine2.jpg",
+      image: "/Divine3.jpg",
       bio: "Divine is a finance and public policy professional with experience in advisory, development finance, and government reform. His experience includes PwC and CHAI, advising top-tier private-sector clients, supporting national reforms and developing WHO-endorsed financing models.",
     },
       {

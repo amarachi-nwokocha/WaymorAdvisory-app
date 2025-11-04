@@ -26,12 +26,12 @@ export default function Footer() {
           <p className="text-[#1E293B] text-sm mb-2">
             <span className="font-semibold">Email:</span> info@waymoradvisory.com
           </p>
-          <p className="text-[#1E293B] text-sm">
+          {/* <p className="text-[#1E293B] text-sm">
             <span className="font-semibold">Website:</span>{" "}
             <a href="https://www.waymoradvisory.com" className="text-[#189086] hover:text-[#1E293B]">
               www.waymoradvisory.com
             </a>
-          </p>
+          </p> */}
         </div>
 
         {/* Quick Links */}
