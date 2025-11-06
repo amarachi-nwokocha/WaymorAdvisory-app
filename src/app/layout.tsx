@@ -1,6 +1,8 @@
 import './globals.css';
 import './font.css';
 import { Montserrat, Open_Sans } from 'next/font/google';
+import { Toaster } from "react-hot-toast";
+
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -45,7 +47,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="twitter:description" content={metadata.description} />
         <meta name="twitter:image" content="/logo5.png" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+          <Toaster position="top-center" reverseOrder={false} />
+        </body>
     </html>
   );
 }

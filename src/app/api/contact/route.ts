@@ -1,5 +1,5 @@
-import nodemailer from "nodemailer";
-import { NextResponse } from "next/server";
+import { Resend } from 'resend';
+import { NextResponse } from 'next/server';
 
 interface FormData {
   fullName: string;
@@ -15,71 +15,47 @@ interface FormData {
   referral: string;
 }
 
-export async function POST(req: Request): Promise<NextResponse> {
-  console.log("✅ API route reached");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
+export async function POST(req: Request) {
   try {
-    console.log("📥 Step 1: Receiving request...");
-    const formData: FormData = await req.json();
-    console.log("✅ Step 1 complete — Form data received:", formData.fullName);
+    console.log("📥 Receiving form data...");
+    const data: FormData = await req.json();
+console.log('Received form data:', data);
 
-    console.log("⚙️ Step 2: Creating transporter...");
-    const transporter = nodemailer.createTransport({
-      host: "smtp.hostinger.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL_USER as string,
-        pass: process.env.EMAIL_PASS as string,
-      },
-    });
-    console.log("✅ Step 2 complete — Transporter created");
+    console.log("✉️ Sending email via Resend...");
+console.log('Resend API Key available:', !!process.env.RESEND_API_KEY);
 
-    console.log("🧪 Step 3: Verifying transporter...");
-    await transporter.verify()
-      .then(() => console.log("✅ Step 3 complete — Transporter verified successfully"))
-      .catch((err) => {
-        console.error("❌ Transporter verification failed:", err);
-        throw new Error("Transporter verification failed: " + err.message);
-      });
-
-    console.log("✉️ Step 4: Preparing mail options...");
-    const mailOptions = {
-      from: `"Waymor Advisory" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      subject: `New Contact Form Submission - ${formData.fullName}`,
+    await resend.emails.send({
+      from: 'Waymor Advisory <info@waymoradivisory.com>',
+      to: 'info@waymoradivisory.com',
+      subject: `New Contact Form Submission — ${data.fullName}`,
       html: `
         <h2>New Strategy Call Request</h2>
-        <p><strong>Name:</strong> ${formData.fullName}</p>
-        <p><strong>Organization:</strong> ${formData.organization}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Phone:</strong> ${formData.countryCode} ${formData.phoneNumber}</p>
-        <p><strong>Service Type:</strong> ${formData.supportType}</p>
-        <p><strong>Preferred Mode:</strong> ${formData.mode}</p>
-        <p><strong>Details:</strong> ${formData.details}</p>
-        <p><strong>Date:</strong> ${formData.date} at ${formData.time}</p>
-        <p><strong>Referral:</strong> ${formData.referral}</p>
+        <p><strong>Name:</strong> ${data.fullName}</p>
+        <p><strong>Organization:</strong> ${data.organization}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Phone:</strong> ${data.countryCode} ${data.phoneNumber}</p>
+        <p><strong>Service Type:</strong> ${data.supportType}</p>
+        <p><strong>Preferred Mode:</strong> ${data.mode}</p>
+        <p><strong>Details:</strong> ${data.details}</p>
+        <p><strong>Date:</strong> ${data.date} at ${data.time}</p>
+        <p><strong>Referral:</strong> ${data.referral}</p>
       `,
-    };
-    console.log("✅ Step 4 complete — Mail options created");
+    });
 
-    console.log("🚀 Step 5: Sending email...");
-    await transporter.sendMail(mailOptions);
-    console.log("✅ Step 5 complete — Email sent successfully");
+    console.log("✅ Email sent successfully");
+    return NextResponse.json({ success: true });
+  } catch (err: unknown) {
+  console.error("❌ Email sending failed:", err);
 
-    return NextResponse.json({ success: true }, { status: 200 });
-
-  } catch (error: unknown) {
-  console.error("Email error:", error);
-
-  let message = "An unexpected error occurred";
-  if (error instanceof Error) {
-    message = error.message;
-  }
+  const errorMessage =
+    err instanceof Error ? err.message : "Something went wrong";
 
   return NextResponse.json(
-    { success: false, error: message },
+    { success: false, error: errorMessage },
     { status: 500 }
   );
 }
+
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import {  X } from "lucide-react";
+import toast from "react-hot-toast";
 const HeroSection = () => {
   // Animation variants with proper typing
   const container: Variants = {
@@ -28,7 +29,7 @@ const HeroSection = () => {
 
    const [isOpen, setIsOpen] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-  
+  const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
       fullName: "",
       organization: "",
@@ -63,12 +64,39 @@ const HeroSection = () => {
     };
   
     // ✅ Logs form data on submit
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      console.log("📝 Submitted Form Data:", formData);
+    const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  console.log("📝 Submitted Form Data:", formData);
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      console.log("✅ Email sent successfully!");
+    toast.success("Your message has been sent successfully!");
       setSubmitted(true);
       setTimeout(() => setIsOpen(false), 3000);
-    };
+    } else {
+      console.error("❌ Failed to send email:", result.error);
+      toast.error("Something went wrong. Please try again later.");
+    }
+  } catch (error) {
+    console.error("⚠️ Network or server error:", error);
+    toast.error("Failed to send request. Please try again later.");
+  }
+  finally {
+    setLoading(false); // stop loader
+  }
+};
 
   return (
  <section
@@ -166,7 +194,7 @@ const HeroSection = () => {
   {/* Left Side (visible only on desktop) */}
   <div className="hidden md:flex bg-[#009C9C] rounded-2xl p-8 
   !text-white flex-col justify-between">
-    <Image src="/logo02.png" alt="Waymor Advisory" className="w-50 mb-6" />
+    <Image src="/logo02.png" width={50} height={50} alt="Waymor Advisory" className="w-50 mb-6" />
     <h3 className="text-2xl font-bold mb-4">Schedule A Strategy Call</h3>
     <p className="text-white/80">
     Schedule a consultation to explore tailored solutions that improve efficiency and drive sustainable results.
@@ -176,183 +204,226 @@ const HeroSection = () => {
   {/* Right Side (Form or Submitted Message) */}
   <div className="relative z-10">
     {!submitted ? (
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 max-h-[80vh] overflow-y-auto pr-2"
+    <form
+  onSubmit={handleSubmit}
+  className="space-y-4 max-h-[80vh] overflow-y-auto pr-2"
+>
+  {/* Full Name */}
+  <input
+    name="fullName"
+    placeholder="Full Name *"
+    value={formData.fullName}
+    onChange={handleChange}
+    required
+    className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white md:text-gray-700 placeholder-white md:placeholder-gray-700"
+  />
+
+  {/* Organization */}
+  <input
+    name="organization"
+    placeholder="Organization / Company Name *"
+    value={formData.organization}
+    onChange={handleChange}
+    required
+    className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white md:text-gray-700 placeholder-white md:placeholder-gray-700"
+  />
+
+  {/* Email */}
+  <input
+    name="email"
+    type="email"
+    placeholder="Email Address *"
+    value={formData.email}
+    onChange={handleChange}
+    required
+    className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white md:text-gray-700 placeholder-white md:placeholder-gray-700"
+  />
+
+  {/* Phone */}
+  <div className="flex gap-2">
+    <select
+      name="countryCode"
+      value={formData.countryCode}
+      onChange={handleChange}
+      required
+      className="border border-gray-300 rounded-md p-2 w-1/3 text-white md:text-gray-700"
+    >
+      <option value="+234">+234</option>
+      <option value="+1">+1</option>
+      <option value="+44">+44</option>
+      <option value="+971">+971</option>
+    </select>
+
+    <input
+      name="phoneNumber"
+      placeholder="Contact Number *"
+      value={formData.phoneNumber}
+      onChange={handleChange}
+      required
+      className="w-2/3 border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white md:text-gray-700 placeholder-white md:placeholder-gray-700"
+    />
+  </div>
+
+  {/* Service Type */}
+  <h2 className="font-bold text-lg !text-white md:!text-[#13304D]">Service Type</h2>
+  <select
+    name="supportType"
+    value={formData.supportType}
+    onChange={handleChange}
+    required
+    className="w-full border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
+  >
+    <option value="">Select a service</option>
+    <option>Advisory & Strategy</option>
+    <option>Governance, Risk & Sustainability</option>
+    <option>Public Sector Finance & Policy</option>
+    <option>Capacity Development & Transformation</option>
+    <option>General Inquiry</option>
+  </select>
+
+  {/* Mode */}
+  <p className="font-bold text-lg !text-white md:!text-[#13304D]">Preferred Mode of Discussion *</p>
+  <div className="flex flex-col gap-1" >
+    <label className="text-white md:text-gray-700">
+      <input
+        type="radio"
+        name="mode"
+        value="Virtual Call"
+        checked={formData.mode === "Virtual Call"}
+        onChange={handleChange}
+        required
+        className="mr-2"
+      />
+      Virtual Call (Zoom / Google Meet)
+    </label>
+    <label className="text-white md:text-gray-700">
+      <input
+        type="radio"
+        name="mode"
+        value="Phone Call"
+        checked={formData.mode === "Phone Call"}
+        onChange={handleChange}
+        required
+        className="mr-2"
+      />
+      Phone Call
+    </label>
+    <label className="text-white md:text-gray-700">
+      <input
+        type="radio"
+        name="mode"
+        value="Office Visit"
+        checked={formData.mode === "Office Visit"}
+        onChange={handleChange}
+        required
+        className="mr-2"
+      />
+      Office Visit
+    </label>
+  </div>
+
+  {/* Details */}
+  <textarea
+    name="details"
+    rows={3}
+    placeholder="Brief Details of Inquiry / Description *"
+    value={formData.details}
+    onChange={handleChange}
+    required
+    className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white md:text-gray-700 placeholder-white md:placeholder-gray-700"
+  />
+
+  {/* Date & Time */}
+  <p className="font-bold text-lg !text-white md:!text-[#13304D]">Date & Time *</p>
+  <div className="flex gap-3">
+    <input
+      name="date"
+      type="date"
+      value={formData.date}
+      onChange={handleChange}
+      required
+      className="w-1/2 border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
+    />
+    <input
+      name="time"
+      type="time"
+      value={formData.time}
+      onChange={handleChange}
+      required
+      className="w-1/2 border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
+    />
+  </div>
+
+  {/* Referral */}
+  <p className="font-bold text-lg !text-white md:!text-[#13304D]">How Did You Hear About Us? *</p>
+  <select
+    name="referral"
+    value={formData.referral}
+    onChange={handleChange}
+    required
+    className="w-full border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
+  >
+    <option value="">Select an option</option>
+    <option>LinkedIn / Social Media</option>
+    <option>Website Search</option>
+    <option>Referral</option>
+    <option>Other</option>
+  </select>
+
+  {/* Consent */}
+  <div className="flex items-start gap-2">
+    <input
+      type="checkbox"
+      name="consent"
+      checked={formData.consent}
+      onChange={handleChange}
+      required
+      className="mt-1"
+    />
+    <p className="text-sm text-white md:text-gray-700">
+      I agree to be contacted by Waymor Advisory Ltd regarding this inquiry and understand that my information will be handled in accordance with the company’s privacy policy.
+    </p>
+  </div>
+
+  {/* Submit */}
+  <button
+  type="submit"
+  disabled={loading}
+  className={`w-full bg-[#13304D] text-white py-3 rounded-md font-semibold transition ${
+    loading ? "opacity-70 cursor-not-allowed" : "hover:bg-[#1a4066]"
+  }`}
+>
+  {loading ? (
+    <div className="flex items-center justify-center gap-2">
+      <svg
+        className="animate-spin h-5 w-5 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
       >
-        {/* Inputs */}
-        <input
-          name="fullName"
-          placeholder="Full Name *"
-          value={formData.fullName}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-        />
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v8z"
+        ></path>
+      </svg>
+      <span>Sending...</span>
+    </div>
+  ) : (
+    "Schedule Call"
+  )}
+</button>
 
-        <input
-          name="organization"
-          placeholder="Organization / Company Name *"
-          value={formData.organization}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086]  text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-        />
+</form>
 
-        <input
-          name="email"
-          type="email"
-          placeholder="Email Address *"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086]  text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-        />
-
-        {/* Phone */}
-        <div className="flex gap-2">
-          <select
-            name="countryCode"
-            value={formData.countryCode}
-            onChange={handleChange}
-            className="border border-gray-300 rounded-md p-2 w-1/3 text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-          >
-            <option value="+234">+234</option>
-            <option value="+1">+1</option>
-            <option value="+44">+44</option>
-            <option value="+971">+971</option>
-          </select>
-          <input
-            name="phoneNumber"
-            placeholder="Contact number"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            className="w-2/3 border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-          />
-        </div>
-
-        {/* Support Type */}
-          <h2 className="font-bold text-lg !text-white md:!text-[#13304D]">Service Type</h2>
-        <select
-          name="supportType"
-          value={formData.supportType}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
-        >
-          <option className="bg-[#13304D] text-white p-2">Advisory & Strategy</option>
-          <option className="bg-[#13304D] text-white p-2">Governance, Risk & Sustainability</option>
-          <option className="bg-[#13304D] text-white p-2">Public Sector Finance & Policy</option>
-          <option className="bg-[#13304D] text-white p-2">Capacity Development & Transformation</option>
-          <option className="bg-[#13304D] text-white p-2">General Inquiry</option>
-        </select>
-
-        {/* Radio Options */}
-        <p className="font-bold text-lg !text-white md:!text-[#13304D]">Preferred Mode of Discussion</p>
-        <div className="flex flex-col gap-1">
-          <label className="text-white md:text-gray-700">
-            <input
-              type="radio"
-              name="mode"
-              value="Virtual Call"
-              checked={formData.mode === "Virtual Call"}
-              onChange={handleChange}
-              className="mr-2 text-white  "
-            />
-            Virtual Call (Zoom / Google Meet)
-          </label>
-          <label className="text-white md:text-gray-700">
-            <input
-              type="radio"
-              name="mode"
-              value="Phone Call"
-              checked={formData.mode === "Phone Call"}
-              onChange={handleChange}
-              className="mr-2 "
-            />
-            Phone Call
-          </label>
-          <label className="text-white md:text-gray-700">
-            <input
-              type="radio"
-              name="mode"
-              value="Office Visit"
-              checked={formData.mode === "Office Visit"}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            Office Visit
-          </label>
-        </div>
-
-        {/* Textarea */}
-        <textarea
-          name="details"
-          rows={3}
-          placeholder="Brief Details of Inquiry / Description"
-          value={formData.details}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-        />
-
-        {/* Date & Time */}
-        
-        <p className="font-bold text-lg !text-white md:!text-[#13304D]">Date & Time</p>
-        <div className="flex gap-3">
-          <input
-            name="date"
-            type="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="w-1/2 border border-gray-300 rounded-md p-2 text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-          />
-          <input
-            name="time"
-            type="time"
-            value={formData.time}
-            onChange={handleChange}
-            className="w-1/2 border border-gray-300 rounded-md p-2 text-white  md:text-gray-700 placeholder-white  md:placeholder-gray-700"
-          />
-        </div>
-
-        {/* Referral */}
-           <p className="font-bold text-lg !text-white md:!text-[#13304D]">How Did You Hear About Us?</p>
-        <select
-          name="referral"
-          value={formData.referral}
-          onChange={handleChange}
-          className="w-full border border-gray-300 rounded-md p-2 text-white md:text-gray-700 md:placeholder-gray-700  placeholder-white"
-        >
-          <option className="bg-[#13304D] text-white p-2">LinkedIn / Social Media</option>
-          <option className="bg-[#13304D] text-white p-2">Website Search</option>
-          <option className="bg-[#13304D] text-white p-2">Referral</option>
-          <option className="bg-[#13304D] text-white p-2">Other</option>
-        </select>
-
-        {/* Consent */}
-        <div className="flex items-start gap-2">
-          <input
-            type="checkbox"
-            name="consent"
-            checked={formData.consent}
-            onChange={handleChange}
-            required
-            className="mt-1 text-white md:text-gray-700"
-          />
-          <p className="text-sm text-white md:text-gray-700">
-            I agree to be contacted by Waymor Advisory Ltd regarding this
-            inquiry and understand that my information will be handled in
-            accordance with the company’s privacy policy.
-          </p>
-        </div>
-
-        {/* Submit */}
-        <button
-          type="submit"
-          className="w-full bg-[#13304D] text-white py-3 rounded-md font-semibold hover:bg-[#1a4066] transition"
-        >
-         Schedule Call
-        </button>
-      </form>
     ) : (
       <div className="flex flex-col items-center justify-center text-center p-6">
         <h3 className="text-xl font-semibold text-[#189086] mb-2">
