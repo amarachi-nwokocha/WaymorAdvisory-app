@@ -140,7 +140,7 @@ export default function ContactSection() {
                 <a className="p-2 rounded-full border border-gray-300 hover:border-[#189086] hover:text-[#189086] transition-all">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a className="p-2 rounded-full border border-gray-300 hover:border-[#189086] hover:text-[#189086] transition-all">
+                <a className="p-2 rounded-full border border-gray-300 hover:border-[#189086] hover:text-[#189086] transition-all" href="https://www.instagram.com/waymoradvisoryltd?utm_source=qr&igsh=MW8wMmd5cmF2Y3p0aQ==" target="_blank">
                   <Instagram className="w-5 h-5" />
                 </a>
               </div>

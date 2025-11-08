@@ -56,7 +56,7 @@ export default function Footer() {
             <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#800020] hover:text-[#800020] transition-all">
               <Twitter className="w-5 h-5" />
             </a>
-            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#800020] hover:text-[#800020] transition-all">
+            <a className="p-2 rounded-full border text-gray-500 border-gray-600 hover:border-[#800020] hover:text-[#800020] transition-all" href="https://www.instagram.com/waymoradvisoryltd?utm_source=qr&igsh=MW8wMmd5cmF2Y3p0aQ==" target="_blank">
               <Instagram className="w-5 h-5" />
             </a>
           </div>
