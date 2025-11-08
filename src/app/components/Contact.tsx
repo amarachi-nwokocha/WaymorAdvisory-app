@@ -294,7 +294,6 @@ export default function ContactSection() {
         value="Phone Call"
         checked={formData.mode === "Phone Call"}
         onChange={handleChange}
-        required
         className="mr-2"
       />
       Phone Call
@@ -306,7 +305,6 @@ export default function ContactSection() {
         value="Office Visit"
         checked={formData.mode === "Office Visit"}
         onChange={handleChange}
-        required
         className="mr-2"
       />
       Office Visit
@@ -332,7 +330,6 @@ export default function ContactSection() {
       type="date"
       value={formData.date}
       onChange={handleChange}
-  
       className="w-1/2 border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
     />
     <input
@@ -340,7 +337,6 @@ export default function ContactSection() {
       type="time"
       value={formData.time}
       onChange={handleChange}
-      required
       className="w-1/2 border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
     />
   </div>

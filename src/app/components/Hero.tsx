@@ -291,7 +291,6 @@ const HeroSection = () => {
         value="Virtual Call"
         checked={formData.mode === "Virtual Call"}
         onChange={handleChange}
-  
         className="mr-2"
       />
       Virtual Call (Zoom / Google Meet)
@@ -303,7 +302,6 @@ const HeroSection = () => {
         value="Phone Call"
         checked={formData.mode === "Phone Call"}
         onChange={handleChange}
-        required
         className="mr-2"
       />
       Phone Call
@@ -315,7 +313,6 @@ const HeroSection = () => {
         value="Office Visit"
         checked={formData.mode === "Office Visit"}
         onChange={handleChange}
-        required
         className="mr-2"
       />
       Office Visit
@@ -329,7 +326,6 @@ const HeroSection = () => {
     placeholder="Brief Details of Inquiry / Description *"
     value={formData.details}
     onChange={handleChange}
-    required
     className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-[#189086] text-white md:text-gray-700 placeholder-white md:placeholder-gray-700"
   />
 
@@ -349,7 +345,6 @@ const HeroSection = () => {
       type="time"
       value={formData.time}
       onChange={handleChange}
-      required
       className="w-1/2 border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
     />
   </div>
