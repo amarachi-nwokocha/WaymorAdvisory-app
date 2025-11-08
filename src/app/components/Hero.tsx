@@ -192,8 +192,8 @@ const HeroSection = () => {
   </button>
 
   {/* Left Side (visible only on desktop) */}
-  <div className="hidden md:flex bg-[#009C9C] rounded-2xl p-8 
-  !text-white flex-col justify-between">
+  <div className="hidden md:flex bg-[#039F9D] rounded-2xl p-8 
+  !text-white flex-col justify-center">
     <Image src="/logo02.png" width={50} height={50} alt="Waymor Advisory" className="w-50 mb-6" />
     <h3 className="text-2xl font-bold mb-4">Schedule A Strategy Call</h3>
     <p className="text-white/80">
@@ -291,7 +291,7 @@ const HeroSection = () => {
         value="Virtual Call"
         checked={formData.mode === "Virtual Call"}
         onChange={handleChange}
-        required
+  
         className="mr-2"
       />
       Virtual Call (Zoom / Google Meet)
@@ -341,7 +341,7 @@ const HeroSection = () => {
       type="date"
       value={formData.date}
       onChange={handleChange}
-      required
+  
       className="w-1/2 border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
     />
     <input
@@ -360,7 +360,7 @@ const HeroSection = () => {
     name="referral"
     value={formData.referral}
     onChange={handleChange}
-    required
+   
     className="w-full border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
   >
     <option value="">Select an option</option>

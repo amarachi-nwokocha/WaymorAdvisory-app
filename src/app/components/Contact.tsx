@@ -183,7 +183,7 @@ export default function ContactSection() {
             </button>
 
             {/* Left Side (visible only on desktop) */}
-            <div className="hidden md:flex bg-[#009C9C] rounded-2xl p-8 !text-white flex-col justify-center">
+            <div className="hidden md:flex bg-[#039F9D] rounded-2xl p-8 !text-white flex-col justify-center">
               <Image src="/logo02.png" width={50} height={50} alt="Waymor Advisory" className="w-50 mb-6" />
             
               <h3 className="text-2xl !text-white font-bold mb-4">Schedule a Strategy Call</h3>
@@ -282,7 +282,7 @@ export default function ContactSection() {
         value="Virtual Call"
         checked={formData.mode === "Virtual Call"}
         onChange={handleChange}
-        required
+        
         className="mr-2"
       />
       Virtual Call (Zoom / Google Meet)
@@ -332,7 +332,7 @@ export default function ContactSection() {
       type="date"
       value={formData.date}
       onChange={handleChange}
-      required
+  
       className="w-1/2 border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
     />
     <input
@@ -351,7 +351,7 @@ export default function ContactSection() {
     name="referral"
     value={formData.referral}
     onChange={handleChange}
-    required
+    
     className="w-full border border-gray-300 rounded-md p-2 text-white md:text-gray-700"
   >
     <option value="">Select an option</option>
