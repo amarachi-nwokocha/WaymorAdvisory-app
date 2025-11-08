@@ -88,12 +88,10 @@ export default function ContactSection() {
           {/* Text & Button */}
           <div className="md:col-span-2 flex flex-col justify-center">
             <h2 className="text-3xl font-bold !text-white font-heading mb-4">
-              Let’s Build Something Exceptional Together
+             Let’s Build What Moves You Forward
             </h2>
             <p className="text-white mb-8 max-w-2xl font-body">
-              Whether you’re a government institution, development partner, or
-              private enterprise, we’d love to discuss how Waymor can support
-              your goals.
+              Whether you’re shaping public policy or expanding private enterprise, Waymor partners with you to deliver clarity, structure, and sustainable solutions
             </p>
 
             <button
