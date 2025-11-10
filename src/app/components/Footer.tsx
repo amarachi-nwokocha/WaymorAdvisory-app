@@ -40,7 +40,7 @@ export default function Footer() {
           <ul className="text-[#1E293B] text-sm space-y-2">
             <li><a href="#mission" className="hover:text-[#189086]">Mission & Vision</a></li>
             <li><a href="#services" className="hover:text-[#189086]">Services</a></li>
-            <li><a href="#advantage" className="hover:text-[#189086]">Waymor Advantage</a></li>
+            <li><a href="#approach" className="hover:text-[#189086]">Waymor Advantage</a></li>
             <li><a href="#team" className="hover:text-[#189086]">Leadership Team</a></li>
             <li><a href="#contact" className="hover:text-[#189086]">Contact Us</a></li>
           </ul>
