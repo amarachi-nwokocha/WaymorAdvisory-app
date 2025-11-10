@@ -27,8 +27,8 @@ console.log('Received form data:', data);
 console.log('Resend API Key available:', !!process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: 'Waymor Advisory <info@waymoradivisory.com>',
-      to: 'info@waymoradivisory.com',
+      from: 'Waymor Advisory <info@waymoradvisory.com>',
+      to: 'info@waymoradvisory.com',
       subject: `New Contact Form Submission — ${data.fullName}`,
       html: `
         <h2>New Strategy Call Request</h2>
